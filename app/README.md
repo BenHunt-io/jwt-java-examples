@@ -7,9 +7,7 @@ This example application is a public bank. The bank has different resources that
 - Balance Sheet
   - Accessible by: roles: all
 - Checking Acccount:
-  - Accessible by: roles: {customer support, admin} and logic: account owner
-- Payroll Data
-  - Accessible by: roles: {accounting, admin, hr}
+  - Accessible by: roles: {tellers, admin} and logic: account owner
 - Employee Performance Review
   - Accessible by: logic: employee's manager
 

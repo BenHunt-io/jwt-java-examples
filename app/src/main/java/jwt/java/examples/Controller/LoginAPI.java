@@ -42,13 +42,16 @@ public class LoginAPI {
                     .collect(Collectors.toList());
 
             Algorithm algo = Algorithm.RSA256(vault.getPublicKey(), vault.getPrivateKey());
-            String jwt = JWT.create()
+            var jwtBuilder = JWT.create()
                     .withIssuer("BankOfUSA")
                     .withClaim("role", userRoles)
-                    .withSubject(userEntity.get().getUsername())
-                    .sign(algo);
+                    .withSubject(userEntity.get().getUsername());
 
-            return jwt;
+            if (userEntity.get().getEmployeeId() != null) {
+                jwtBuilder.withClaim("employeeId", userEntity.get().getEmployeeId());
+            }
+
+            return jwtBuilder.sign(algo);
         } else {
             return "Invalid Username or Password";
         }

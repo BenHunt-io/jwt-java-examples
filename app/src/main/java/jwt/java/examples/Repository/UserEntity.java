@@ -16,5 +16,6 @@ public class UserEntity {
     private String username;
     private String password;
     private Set<UserRole> roles;
+    private Long employeeId;
 
 }

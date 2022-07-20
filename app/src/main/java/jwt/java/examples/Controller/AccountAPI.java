@@ -23,7 +23,7 @@ import jwt.java.examples.Model.Account;
 import jwt.java.examples.Repository.UserRole;
 import jwt.java.examples.Security.Vault;
 
-@Path("/account/")
+@Path("/account")
 public class AccountAPI {
 
     @Inject
@@ -31,7 +31,7 @@ public class AccountAPI {
 
     private boolean isAuthenticated(String authHeader) {
 
-        Set<String> allowedRoles = Stream.of(UserRole.ADMIN.toString(), UserRole.CUSTOMER_SUPPORT.toString())
+        Set<String> allowedRoles = Stream.of(UserRole.ADMIN.toString(), UserRole.TELLER.toString())
                 .collect(Collectors.toSet());
 
         String jsonWebToken = JwtUtil.parseJWT(authHeader);
